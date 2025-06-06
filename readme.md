@@ -13,4 +13,4 @@ Integrate AI feature, where users can input available ingredients, and the appli
 ![ERD](https://github.com/rohitadittya/Recipe-Maker-Social-Media/blob/main/public/assets/images/ERD.png)
 
 ## Relations:
-![image](https://github.com/rohitadittya/Recipe-Maker-Social-Media/blob/main/public/assets/images/Recipe_Maker_Relation_diagram.png)#
+![image](https://github.com/rohitadittya/Recipe-Maker-Social-Media/blob/main/public/assets/images/Recipe_Maker_Relation_diagram.png)
