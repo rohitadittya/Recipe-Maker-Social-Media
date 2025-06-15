@@ -14,3 +14,10 @@ Integrate AI feature, where users can input available ingredients, and the appli
 
 ## Relations:
 ![image](https://github.com/rohitadittya/Recipe-Maker-Social-Media/blob/main/public/assets/images/Recipe_Maker_Relation_diagram.png)
+
+## To run the application:
+1. npm i
+2. add the following in .env file
+   1. dbURL - Mongo DB Atlas URL
+   2. JWT_SECRET - A Secret for JWT
+3. npm run dev
