@@ -29,7 +29,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"username\": \"Rohit update\",\r\n    \"firstname\": \"Rohit Adittya update\",\r\n    \"lastname\": \"Thumati update\",\r\n    \"email\": \"test@gmail.com\"\r\n}",
+									"raw": "{\r\n    \"username\": \"Rohit updated\",\r\n    \"firstname\": \"Rohit Adittya update\",\r\n    \"lastname\": \"Thumati update\",\r\n    \"email\": \"test@gmail.com\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -92,7 +92,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"Rohit\",\r\n    \"firstname\": \"Rohit Adittya\",\r\n    \"lastname\": \"Thumati\",\r\n    \"email\": \"test@gmail.com\",\r\n    \"password\": \"test\"\r\n}",
+							"raw": "{\r\n    \"username\": \"Rohit\",\r\n    \"firstname\": \"Rohit Adittya\",\r\n    \"lastname\": \"Thumati\",\r\n    \"email\": \"test6@gmail.com\",\r\n    \"password\": \"test\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -191,7 +191,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"comment\": \"This is my second comment!!!\",\r\n    \"recipeId\": \"684f047a9d8b9bff4e08de2a\"\r\n}",
+											"raw": "{\r\n    \"comment\": \"This is my 1st comment!!!\",\r\n    \"recipeId\": \"684f05d49d8b9bff4e08de3f\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -243,7 +243,7 @@
 											"variable": [
 												{
 													"key": "recipeId",
-													"value": "684f047a9d8b9bff4e08de2a"
+													"value": "684f05d49d8b9bff4e08de3f"
 												}
 											]
 										}
@@ -280,7 +280,53 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "684f0aef7e59fab47ec1a89f"
+													"value": "684f0b167e59fab47ec1a8ad"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Edit Comment",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{JWT_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"comment\": \"This is my second comment updated!!!\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/comment/:id",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"comment",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "684f0b167e59fab47ec1a8ad"
 												}
 											]
 										}
@@ -328,7 +374,7 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "684f04519d8b9bff4e08de28"
+													"value": "6854372db2f01a703c58a2af"
 												}
 											]
 										}
@@ -401,7 +447,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"recipeId\": \"684f047a9d8b9bff4e08de2a\",\r\n    \"recipeName\": \"Test1-Updated\",\r\n    \"description\": \"Test Desc Updated\",\r\n    \"ingredients\": [\"1. Egg\" , \"2. Milk\", \"3. Flour Updated\", \"1. Egg\", \"2. Milk\", \"3. Flour Updated\"],\r\n    \"instructions\": [\"1.Stirr\", \"2. Boil\", \"3. Mix Updated\", \"1.Stirr\", \"2. Boil\", \"3. Mix Updated\"],\r\n    \"userId\": 1\r\n}",
+											"raw": "{\r\n    \"recipeId\": \"6854372db2f01a703c58a2af\",\r\n    \"recipeName\": \"Test1-Updated\",\r\n    \"description\": \"Test Desc Updated\",\r\n    \"ingredients\": [\"1. Egg\" , \"2. Milk\", \"3. Flour Updated\", \"1. Egg\", \"2. Milk\", \"3. Flour Updated\"],\r\n    \"instructions\": [\"1.Stirr\", \"2. Boil\", \"3. Mix Updated\", \"1.Stirr\", \"2. Boil\", \"3. Mix Updated\"],\r\n    \"userId\": 1\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -423,7 +469,7 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "684f05d49d8b9bff4e08de3f"
+													"value": "6854372db2f01a703c58a2af"
 												}
 											]
 										}
@@ -528,7 +574,7 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "684f04519d8b9bff4e08de28"
+													"value": "6854372db2f01a703c58a2af"
 												}
 											]
 										}

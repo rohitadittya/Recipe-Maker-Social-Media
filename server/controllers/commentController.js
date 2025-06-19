@@ -19,8 +19,14 @@ const deleteCommentByCommentId = async (req, res) => {
     return res.status(200).send(1);
 };
 
+const updateCommentByCommentId = async (req, res) => {
+    const updatedComment = await commentService.updateCommentByCommentId(req);
+    return res.status(200).send(updatedComment);
+}
+
 module.exports = {
     comment,
     getAllCommentsByRecipeId,
-    deleteCommentByCommentId
+    deleteCommentByCommentId,
+    updateCommentByCommentId
 }

@@ -10,6 +10,11 @@ const commentSchema = new mongoose.Schema({
         required: true,
         default: Date.now,
     },
+    updatedTimeStamp: {
+        type: Date,
+        required: false,
+        default: null,
+    },
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',

@@ -27,7 +27,7 @@ const comment = async (req) => {
 };
 
 const getAllCommentsByRecipeId = async (req) => {
-    return await commentsModel.find({recipeId: req.params.id});
+    return await commentsModel.find({ recipeId: req.params.id });
 };
 
 const deleteCommentByCommentId = async (req) => {
@@ -38,9 +38,25 @@ const deleteCommentByCommentId = async (req) => {
     }
 };
 
+const updateCommentByCommentId = async (req) => {
+    await getCommentByIdHandler(req.params.id, getLoggedInUserId(req));
+    const updateData = {
+        comment: req.body.comment,
+        updatedTimeStamp: Date.now(),
+    };
+
+    const updated = await commentsModel.findByIdAndUpdate(req.params.id, updateData, { new: true });
+    if (!updated) {
+        throw { message: 'Unable to edit comment', status: 500 };
+    }
+
+    return updated;
+};
+
 module.exports = {
     deleteAllCommentsForRecipeHandler,
     comment,
     getAllCommentsByRecipeId,
-    deleteCommentByCommentId
-}
+    deleteCommentByCommentId,
+    updateCommentByCommentId
+};
