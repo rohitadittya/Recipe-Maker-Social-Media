@@ -13,7 +13,7 @@ function App() {
       <Route path='/login' element={<Login />} />
       <Route path='/register' element={<Register />} />
       <Route path='/user/profile' element={<Profile />} />
-      <Route path='/recipe/add' element={<UpsertRecipe />} />
+      <Route path='/recipe/post' element={<UpsertRecipe />} />
       <Route path='*' element={<PageNotFound />} />
     </Routes>
   );

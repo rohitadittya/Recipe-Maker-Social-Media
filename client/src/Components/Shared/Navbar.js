@@ -16,7 +16,7 @@ const Navbar = () => {
                             <NavLink to="/register" className="nav-link">Register</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink to="/recipe/add" className="nav-link">Post Recipe</NavLink>
+                            <NavLink to="/recipe/post" className="nav-link">Post Recipe</NavLink>
                         </li>
                         <li className="nav-item ms-auto">
                             <NavLink to="/user/profile" className="nav-link">Profile</NavLink>

@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 
 const UpsertRecipe = (props) => {
-  const { edit } = useParams();
-  const isEdit = edit === "true";
+  const [searchParams] = useSearchParams();
+  const isEdit = searchParams.get('edit');
 
   const [recipe, setRecipe] = useState({
     recipeName: "",
@@ -47,7 +47,7 @@ const UpsertRecipe = (props) => {
     <div className="container mt-5">
       <div className="row justify-content-center">
         <div className="col-md-6 col-lg-8 shadow p-4 bg-body-tertiary rounded">
-          <h2>{isEdit ? "Edit Recipe" : "Create Recipe"}</h2>
+          <h2>{isEdit ? "Update Recipe" : "Create Recipe"}</h2>
           <form onSubmit={handleSumbit}>
             <div className="mb-3">
               <label htmlFor="recipeName" className="form-label">
