@@ -67,7 +67,7 @@ const Comment = (props) => {
 
                 <div className="d-flex justify-content-start mt-2">
                     <LikeBtn recipe={props?.recipe} />
-                    <button className="comment-btn btn btn-primary" onClick={handleCommentSubmit} value={newComment}>
+                    <button className="comment-btn btn btn-primary" onClick={handleCommentSubmit}>
                         Comment
                     </button>
                 </div>

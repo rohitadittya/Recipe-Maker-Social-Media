@@ -7,7 +7,7 @@ const NoRecipeFound = () => {
             <div className="text-center mt-5">
                 <h1 className="display-4 text-danger">Oops! No Recipe Found</h1>
                 <p className="lead">Try creating a new one or check the feed.</p>
-                <div className="d-flex justify-content-center flex-wrap gap-2">
+                <div className="no-recipe-found-btn-grp d-flex justify-content-center flex-wrap gap-2">
                     <button className="btn btn-outline-secondary mt-3" onClick={() => navigate('/')}>
                         Go Home
                     </button>

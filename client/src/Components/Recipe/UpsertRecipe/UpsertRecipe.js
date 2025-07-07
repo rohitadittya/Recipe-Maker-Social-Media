@@ -62,7 +62,7 @@ const UpsertRecipe = (props) => {
 
 
   return (
-    <div className="container mt-4">
+    <div className="upsert-recipe-container container mt-4">
       <div className="row justify-content-center">
         <div className="col-md-6 col-lg-8 shadow p-4 bg-body-tertiary rounded">
           <h2>{isEdit ? "Update Recipe" : "Create Recipe"}</h2>
@@ -97,7 +97,7 @@ const UpsertRecipe = (props) => {
               />
             </div>
 
-            <div className="mb-3">
+            <div className="ingredients-grp mb-3">
               <div className="d-flex align-items-center mb-2">
                 <label className="form-label mb-0">Ingredients</label>
                 <button type="button" className="btn btn-outline-primary btn-sm ms-2" onClick={() => addListItem('ingredients')}>+</button>
@@ -114,7 +114,7 @@ const UpsertRecipe = (props) => {
               }
             </div>
 
-            <div className="mb-3">
+            <div className="instruction-grp mb-3">
               <div className="d-flex align-items-center mb-2">
                 <label className="form-label mb-0">Instructions</label>
                 <button type="button" className="btn btn-outline-primary btn-sm ms-2" onClick={() => addListItem('instructions')}>+</button>
@@ -131,7 +131,7 @@ const UpsertRecipe = (props) => {
               }
             </div>
 
-            <div className="d-grid">
+            <div className="upsert-btn d-grid">
               <button type="submit" className="main-btn btn">
                 {isEdit ? 'Update Recipe' : 'Create Recipe'}
               </button>
