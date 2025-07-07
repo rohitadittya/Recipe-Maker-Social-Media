@@ -21,3 +21,6 @@ Integrate AI feature, where users can input available ingredients, and the appli
    1. dbURL - Mongo DB Atlas URL
    2. JWT_SECRET - A Secret for JWT
 3. npm run dev
+
+## You can find the postman collection [here](https://github.com/rohitadittya/Recipe-Maker-Social-Media/tree/main/server/postman-collections)
+Import the [collection](https://github.com/rohitadittya/Recipe-Maker-Social-Media/blob/main/server/postman-collections/SUNY%20Recipe%20Maker%20Appln.postman_collection.json) and the [environment_variables](https://github.com/rohitadittya/Recipe-Maker-Social-Media/blob/main/server/postman-collections/recipe_app_local.postman_environment.json).
