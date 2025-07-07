@@ -1,12 +1,14 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { updateProfile } from "../../../Redux/Actions/UserActions";
 
 const Profile = () => {
-    const [profileForm, setProfileForm] = useState({
-        username: '',
-        firstname: '',
-        lastname: '',
-        password: '',
-    });
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const userData = useSelector((state) => state.user.userInfo);
+
+    const [profileForm, setProfileForm] = useState({ ...userData });
 
     const handleChange = (e) => {
         setProfileForm({
@@ -15,13 +17,16 @@ const Profile = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("API call to register", profileForm);
+        const updatedProfile = await dispatch(updateProfile(profileForm));
+        if (updatedProfile?.user) {
+            navigate('/');
+        }
     };
 
     return (
-        <div className="profile-container container mt-5">
+        <div className="profile-container container mt-4">
             <div className="row justify-content-center">
                 <div className="col-md-6 col-lg-4 shadow p-4 bg-body-tertiary rounded">
                     <h2 className="mb-4 text-center">Profile</h2>
@@ -43,7 +48,7 @@ const Profile = () => {
                             <input type="password" className="form-control" id="password" name="password" onChange={handleChange} />
                         </div>
                         <div className="d-grid">
-                            <button type="submit" className="btn btn-primary">Update Profile</button>
+                            <button type="submit" className="btn main-btn">Update Profile</button>
                         </div>
                     </form>
                 </div>

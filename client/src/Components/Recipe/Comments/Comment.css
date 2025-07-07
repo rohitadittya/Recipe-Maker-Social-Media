@@ -1,0 +1,6 @@
+.comment-container {
+    .comment-template {
+        max-height: 400px;
+        overflow-y: auto;
+    }
+}

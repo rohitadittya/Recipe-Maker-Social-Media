@@ -1,0 +1,23 @@
+.recipe-card-container {
+    .recipe-card {
+        .recipe-card-btn-grp {
+            .user-liked {
+                background-color: rgb(138, 172, 202);
+            }
+        }
+
+        .recipe-card-content {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+
+        .recipe-card-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            background-color: #f9f9f9;
+            /* border: 1px solid #e0e0e0; */
+            border-radius: 1%;
+            padding: 15px;
+        }
+    }
+}

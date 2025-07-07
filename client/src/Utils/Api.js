@@ -1,4 +1,28 @@
+import { SESSION_STORAGE_KEYS } from "./Constants";
+
 const API_BASE_URL = "http://localhost:5000/api";
+
+let noOfActiveReq = 0;
+let loadingCB = null;
+let errorCB = null;
+
+export const setLoadingHandler = (cb) => {
+    loadingCB = cb;
+};
+
+const updateLoading = () => {
+    if (loadingCB) {
+        loadingCB(noOfActiveReq > 0);
+    }
+};
+
+export const setErrorHandler = (cb) => {
+    errorCB = cb;
+};
+
+const setError = (error) => {
+    errorCB(error);
+};
 
 const constructUrl = (url, params) => {
     const apiUrl = `${API_BASE_URL}${url}`;
@@ -9,7 +33,7 @@ const constructUrl = (url, params) => {
 }
 
 const constructHeaders = (headers) => {
-    const token = window.sessionStorage.getItem("JWT_TOKEN") || null;
+    const token = window.sessionStorage.getItem(SESSION_STORAGE_KEYS.JWT_TOKEN) || null;
     return {
         "Content-Type": "application/json",
         "Authorization": token ? `Bearer ${token}` : null,
@@ -27,22 +51,32 @@ const constructHeaders = (headers) => {
  * @returns 
  */
 const httpClient = async (apiUrl, method = "GET", body = null, queryParams = null, headersObj = {}) => {
-    const url = constructUrl(apiUrl, queryParams);
-    const options = {
-        method,
-        body: body ? JSON.stringify(body) : null,
-        headers: constructHeaders(headersObj),
-    }
+    noOfActiveReq++;
+    updateLoading();
 
-    const response = await fetch(url, options);
-    
-    if (!response.ok) {
-        const err = await response.json();
-        // showToast(err, true)
-        throw err;
-    }
+    try {
+        const url = constructUrl(apiUrl, queryParams);
+        const options = {
+            method,
+            body: body ? JSON.stringify(body) : null,
+            headers: constructHeaders(headersObj),
+        }
+        const response = await fetch(url, options);
 
-    return await response.json();
+        if (!response.ok) {
+            const err = await response.json();
+            setError(err?.message || "Some Error Occured.");
+            setTimeout(() => {
+                setError("")
+            }, 2000);
+            throw err;
+        }
+        return await response.json();
+    }
+    finally {
+        noOfActiveReq--;
+        updateLoading();
+    }
 };
 
 export default httpClient;

@@ -1,4 +1,5 @@
 const userService = require('../services/userService');
+const { getLoggedInUserId } = require('../utils/utils');
 
 
 const login = async (req, res) => {
@@ -21,9 +22,15 @@ const fetchAllUsers = async (req, res) => {
     return res.status(200).send(users);
 };
 
+const fetchLoggedInUser = async (req, res) => {
+    const user = await userService.fetchUserById(getLoggedInUserId(req));
+    return res.status(200).send(user)
+};
+
 module.exports = {
     login,
     register,
     updateUser,
-    fetchAllUsers
+    fetchAllUsers,
+    fetchLoggedInUser
 };

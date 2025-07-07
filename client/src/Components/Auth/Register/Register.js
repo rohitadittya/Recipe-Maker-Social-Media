@@ -1,6 +1,12 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { registerUser } from "../../../Redux/Actions/UserActions";
 
 const Register = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const [registerForm, setRegisterForm] = useState({
         username: '',
         firstname: '',
@@ -16,13 +22,16 @@ const Register = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("API call to register", registerForm);
+        const registeredUser = await dispatch(registerUser(registerForm));
+        if (registeredUser?.user) {
+            navigate('/user/profile');
+        }
     };
 
     return (
-        <div className="register-container container mt-5">
+        <div className="register-container container mt-4">
             <div className="row justify-content-center">
                 <div className="col-md-6 col-lg-4 shadow p-4 bg-body-tertiary rounded">
                     <h2 className="mb-4 text-center">Register</h2>
@@ -48,7 +57,7 @@ const Register = () => {
                             <input type="password" className="form-control" id="password" name="password" value={registerForm.password} onChange={handleChange} required />
                         </div>
                         <div className="d-grid">
-                            <button type="submit" className="btn btn-primary">Register</button>
+                            <button type="submit" className="btn main-btn">Register</button>
                         </div>
                     </form>
                 </div>

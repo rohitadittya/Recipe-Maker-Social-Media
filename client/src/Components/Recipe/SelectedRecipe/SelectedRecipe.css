@@ -1,0 +1,16 @@
+.selected-recipe-container {
+    .recipe-comment-section {
+        .recipe-section {
+            .recipe-card-container {
+                margin-top: 0 !important;
+            }
+        }
+
+        .comment-section {
+            .comment-card {
+                border: none !important;
+                box-shadow: none;
+            }
+        }
+    }
+}

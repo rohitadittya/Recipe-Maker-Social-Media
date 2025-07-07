@@ -95,5 +95,6 @@ module.exports = {
     userLogin,
     userRegister,
     updateUser,
-    fetchAllUsers
+    fetchAllUsers,
+    fetchUserById
 };

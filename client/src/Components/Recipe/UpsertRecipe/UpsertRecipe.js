@@ -1,18 +1,33 @@
-import { useState } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { upsertRecipe } from "../../../Redux/Actions/RecipeActions";
+import { getRecipeById } from "../../../Redux/Selectors/RecipeSelector";
 
 const UpsertRecipe = (props) => {
   const [searchParams] = useSearchParams();
-  const isEdit = searchParams.get('edit');
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const recipeId = searchParams.get('recipeId');
+  const isEdit = (recipeId && true) || false;
+  const recipeToEdit = useSelector((state) => getRecipeById(state, recipeId));
 
   const [recipe, setRecipe] = useState({
+    _id: "",
     recipeName: "",
     description: "",
     ingredients: [],
     instructions: [],
     createdTimeStamp: new Date(),
-    userId: null, // TODO: Get user id from context or redux store
+    userId: "",
   });
+
+  useEffect(() => {
+    if (isEdit) {
+      setRecipe({ ...recipeToEdit, updatedTimeStamp: new Date() });
+    }
+  }, [recipeToEdit, isEdit])
 
   const handleChange = (e) => {
     setRecipe({
@@ -24,7 +39,7 @@ const UpsertRecipe = (props) => {
   const handleChangeForListItem = (e, index, field) => {
     const updatedList = [...recipe[field]];
     updatedList[index] = e.target.value;
-    setRecipe((prevRecipe) => ({...prevRecipe, [field]: updatedList }));
+    setRecipe((prevRecipe) => ({ ...prevRecipe, [field]: updatedList }));
   };
 
   const addListItem = (field) => {
@@ -37,18 +52,21 @@ const UpsertRecipe = (props) => {
     setRecipe((prevRecipe) => ({ ...prevRecipe, [field]: updatedList }));
   };
 
-  const handleSumbit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("API call to create or update recipe", recipe);
-  }
+    const upsertRecipeRes = await dispatch(upsertRecipe(recipe));
+    if (upsertRecipeRes) {
+      navigate('/recipe/self');
+    }
+  };
 
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-4">
       <div className="row justify-content-center">
         <div className="col-md-6 col-lg-8 shadow p-4 bg-body-tertiary rounded">
           <h2>{isEdit ? "Update Recipe" : "Create Recipe"}</h2>
-          <form onSubmit={handleSumbit}>
+          <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label htmlFor="recipeName" className="form-label">
                 Title
@@ -113,9 +131,11 @@ const UpsertRecipe = (props) => {
               }
             </div>
 
-            <button type="submit" className="btn btn-success">
-              {isEdit ? 'Update Recipe' : 'Create Recipe'}
-            </button>
+            <div className="d-grid">
+              <button type="submit" className="main-btn btn">
+                {isEdit ? 'Update Recipe' : 'Create Recipe'}
+              </button>
+            </div>
           </form>
         </div>
       </div>

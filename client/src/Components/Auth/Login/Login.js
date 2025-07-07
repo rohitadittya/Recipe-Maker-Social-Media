@@ -1,6 +1,12 @@
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
+import { loginUser } from '../../../Redux/Actions/UserActions';
 
-const Login = () => {
+const Login = (props) => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const [loginForm, setLoginForm] = useState({
         email: '',
         password: '',
@@ -13,13 +19,16 @@ const Login = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("API call to login", loginForm)
+        const res = await dispatch(loginUser(loginForm))
+        if (res?.user) {
+            navigate('/user/profile');
+        }
     };
 
     return (
-        <div className="container mt-5">
+        <div className="login-container container mt-4">
             <div className="row justify-content-center">
                 <div className="col-md-6 col-lg-4 shadow p-4 bg-body-tertiary rounded">
                     <h2 className="mb-4 text-center">Login</h2>
@@ -33,7 +42,7 @@ const Login = () => {
                             <input type="password" className="form-control" id="password" name="password" value={loginForm.password} onChange={handleChange} required />
                         </div>
                         <div className="d-grid">
-                            <button type="submit" className="btn btn-primary">Login</button>
+                            <button type="submit" className="btn main-btn">Login</button>
                         </div>
                     </form>
                 </div>

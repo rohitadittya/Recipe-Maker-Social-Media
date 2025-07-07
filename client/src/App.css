@@ -1,4 +1,114 @@
-.active {
-  color: black;
-  border-bottom: 2px solid salmon;
+body {
+  margin: 0;
+  background-color: #eae7dc;
+}
+
+.navbar {
+  background-color: #e3d0b7 !important;
+
+  .logo {
+    max-width: 40px;
+    border-radius: 20px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .active {
+    color: #030202;
+    border-bottom: 1px solid #030202;
+  }
+
+  .logout-link {
+    cursor: pointer;
+  }
+}
+
+
+.recipe-card-action-btn-grp,
+.comment-card {
+  .comment-btn {
+    background-color: #5e92ad;
+    color: white;
+  }
+
+  .comment-btn:hover {
+    background-color: #4f7487;
+  }
+
+  .delete-btn {
+    background-color: #edbabe;
+    color: #721c24;
+  }
+
+  .delete-btn:hover {
+    background-color: #e8abb1;
+  }
+
+  .edit-btn {
+    background-color: #aad4dc;
+    color: #0c5460;
+  }
+
+  .edit-btn:hover {
+    background-color: #a9e6f0;
+  }
+
+  .like-btn {
+    background-color: #e0dada;
+    color: #912f40;
+  }
+
+  .like-btn:hover {
+    background-color: #f4b6b4;
+  }
+
+  .user-liked {
+    background-color: #f7cac9 !important;
+  }
+}
+
+.main-btn {
+  background: #d8c3a5;
+  color: rgb(44, 42, 42);
+  border: none;
+  width: 200px;
+  justify-self: center;
+}
+
+.main-btn:hover {
+  background: #d5bc99;
+  color: rgb(44, 42, 42);
+}
+
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.6);
+  z-index: 9999;
+  pointer-events: all;
+  user-select: none;
+}
+
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1050;
+  font-size: 14px;
+  display: inline !important;
+  cursor: pointer;
+}
+
+.toast.error-toast {
+  background-color: #e6695c;
+}
+
+.toast.success-toast {
+  background-color: #5fb873;
 }
