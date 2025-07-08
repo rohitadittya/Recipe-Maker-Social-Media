@@ -16,11 +16,12 @@ Integrate AI feature, where users can input available ingredients, and the appli
 ![image](https://github.com/rohitadittya/Recipe-Maker-Social-Media/blob/main/client/public/assets/images/Recipe_Maker_Relation_diagram.png)
 
 ## To run the application:
-1. npm i
-2. add the following in .env file
+1. npm i (on root folder)
+2. npm i (on client folder)
+3. add the following in .env file
    1. dbURL - Mongo DB Atlas URL
    2. JWT_SECRET - A Secret for JWT
-3. npm run dev
+4. npm run dev
 
 ## You can find the postman collection [here](https://github.com/rohitadittya/Recipe-Maker-Social-Media/tree/main/server/postman-collections)
 Import the [collection](https://github.com/rohitadittya/Recipe-Maker-Social-Media/blob/main/server/postman-collections/SUNY%20Recipe%20Maker%20Appln.postman_collection.json) and the [environment_variables](https://github.com/rohitadittya/Recipe-Maker-Social-Media/blob/main/server/postman-collections/recipe_app_local.postman_environment.json).
